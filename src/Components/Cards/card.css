@@ -1,0 +1,38 @@
+.buttonCard{
+    background-color: #FDBC08;
+    color: white;
+    border: #FDBC08;
+}
+
+.buttonCard:hover{
+    background-color: #212529;
+}
+
+.card-text{
+    min-height: 10vh;
+    height: 10vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.card-text::-webkit-scrollbar{
+    -webkit-appearance: none;
+}
+
+.card-text::-webkit-scrollbar:vertical {
+    width:10px;
+}
+
+.card-text::-webkit-scrollbar-thumb{
+    background-color: #FDBC08;
+    border-radius: 8px;
+}
+
+.cardApp{
+    box-shadow: 0 0 5px #212529;
+    transition: all 0.2s ease-in-out;
+}
+
+.cardApp:hover{
+transform: scale(1.1);
+}
