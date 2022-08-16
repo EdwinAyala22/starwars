@@ -2,25 +2,26 @@ import React, { useEffect} from 'react';
 import { usePerson } from '../../Hooks/usePerson';
 
 export const Characters = () => {
-// const [isLoading, setIsLoading] = useState(true);
-// const [personajes, setPersonajes] = useState([]);
 
   const {getAllPerson,dataPeople} = usePerson();
 
   useEffect(()=>{
+
     getAllPerson();
-    // let data = [dataPeople];
-    // data[0].map((result) => (console.log(result.count)) )
-    let data = Object.keys(dataPeople);
-    for (let i = 0; i < data.length; i++) {
-      let clave = data[i];
-      console.log(dataPeople[clave])
-      
-    }
-  }, []);
+
+    console.log(dataPeople);
+
+  }, [])
   return (
     <div>
-      
+      <h1>LOS PERSONAJES</h1>
+      {dataPeople.map((people) => (
+        <div className='card' key={people.birth_year}>
+          <h1> {people.name} </h1>
+          <p> {people.height} </p>
+        </div>
+        
+      ))}
     </div>
   )
 }

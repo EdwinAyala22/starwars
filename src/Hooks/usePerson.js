@@ -13,8 +13,8 @@ export const usePerson = () => {
           };
           
           fetch("https://swapi.dev/api/people/", requestOptions)
-            .then(response => response.text())
-            .then(result => setDataPeople([result]))
+            .then(response => response.json())
+            .then(result => setDataPeople(result.results))
             .catch(error => console.log('error', error));
     }
 
