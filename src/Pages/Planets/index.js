@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react';
+import { useEffect} from 'react';
 import { usePlanets } from '../../Hooks/usePlanets';
 
 export const Planets = () => {
@@ -15,7 +15,7 @@ export const Planets = () => {
   }, [])
   return (
     <div>
-      <h1>LOS PERSONAJES</h1>
+      <h1>LOS PLANETAS</h1>
       {dataPlanets.map((planets) => (
         <div className='card' key={planets.name}>
           <h1> {planets.name} </h1>

@@ -1,0 +1,39 @@
+.buttonCardCharacter{
+    background-color: #FDBC08;
+    color: white;
+    border: 0;
+}
+
+.buttonCardCharacter:hover{
+    background-color: #212529;
+    border: 0;
+}
+
+.list-group{
+    min-height: 8.9vh;
+    height: 8.9vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.list-group::-webkit-scrollbar{
+    -webkit-appearance: none;
+}
+
+.list-group::-webkit-scrollbar:vertical {
+    width:10px;
+}
+
+.list-group::-webkit-scrollbar-thumb{
+    background-color: #FDBC08;
+    border-radius: 8px;
+}
+
+.cardCharacter{
+    box-shadow: 0 0 5px #212529;
+    transition: all 0.2s ease-in-out;
+}
+
+.cardCharacter:hover{
+transform: scale(1.1);
+}
