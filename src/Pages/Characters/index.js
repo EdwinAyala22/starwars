@@ -1,15 +1,17 @@
 import { useEffect } from "react";
 import { usePerson } from "../../Hooks/usePerson";
 import { CardCharacter } from "./Card";
+import imgPerson from "../../Assets/img/imgPerson.jpg";
+// import { BsArrowRightSquareFill } from "react-icons/bs";
 
 export const Characters = () => {
-  const { getAllPerson, dataPeople } = usePerson();
-
+  const { getAllPerson, dataPeople, Contador, disminuir, aumentar, disabled, disabledRight } = usePerson();
+  console.log(disabled);
   useEffect(() => {
-    getAllPerson();
 
-    console.log(dataPeople);
-  }, []);
+    getAllPerson(Contador);
+
+  }, [dataPeople]);
   return (
     <div>
       <h1>LOS PERSONAJES</h1>
@@ -26,9 +28,30 @@ export const Characters = () => {
             mass={people.mass}
             birthYear={people.birth_year}
             styleButtonCharacter={people.eye_color}
+            imgPerson={imgPerson}
           />
         ))}
       </div>
+      <nav aria-label="Page navigation example" className="d-flex justify-content-center align-items-center">
+        <ul className="pagination">
+          <li className={disabled ? "page-item" :"page-item disabled"}>
+            <button className="page-link" onClick={disminuir}>
+              <span aria-hidden="true">&laquo;</span>
+              <span className="sr-only">Previous</span>
+            </button>
+          </li>
+          <li className="page-item">
+              <p className="page-link">{Contador}</p>
+          </li>
+          <li className={disabledRight ? "page-item" :"page-item disabled"}>
+            <button className="page-link" onClick={aumentar}>
+              <span className="sr-only">Next</span>
+              <span aria-hidden="true">&raquo;</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+
     </div>
   );
 };

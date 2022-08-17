@@ -4,14 +4,15 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import './card.css';
 import CardHeader from "react-bootstrap/esm/CardHeader";
+// import {imgPerson} from "../../Assets/img/imgPerson.jpg";
 
-
-export const CardCharacter = ({name, hairColor, eyeColor, skinColor, gender, height, mass, birthYear}) => {
+export const CardCharacter = ({name, hairColor, eyeColor, skinColor, gender, height, mass, birthYear, imgPerson}) => {
   return (
-    <Card style={{ width: "18rem" }} className="m-5 text-center cardCharacter" >
+    <Card style={{ width: "19rem" }} className="m-5 text-center cardCharacter" >
       <CardHeader className="bg-dark text-white fw-bold">
         {name}
       </CardHeader>
+        <Card.Img variant="top" src={imgPerson} style={{borderRadius: 0}} />
       <ListGroup className="list-group-flush">
         <ListGroup.Item><b>Hair color:</b> {hairColor}</ListGroup.Item>
         <ListGroup.Item><b>Eye color:</b> {eyeColor}</ListGroup.Item>
