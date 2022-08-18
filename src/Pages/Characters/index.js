@@ -1,17 +1,31 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { usePerson } from "../../Hooks/usePerson";
 import { CardCharacter } from "./Card";
 import imgPerson from "../../Assets/img/imgPerson.jpg";
 // import { BsArrowRightSquareFill } from "react-icons/bs";
 
 export const Characters = () => {
-  const { getAllPerson, dataPeople, Contador, disminuir, aumentar, disabled, disabledRight } = usePerson();
-  console.log(disabled);
+  const { getAllPerson, dataPeople, Contador, disminuir, aumentar, disabled } = usePerson();
+
+
+  const [disabledRight, setDisabledRight] = useState(false);
+
+
   useEffect(() => {
 
     getAllPerson(Contador);
 
+    if(Contador ===9){
+        setDisabledRight(true);
+      }
+    if(Contador < 9){
+      setDisabledRight(false);
+    }
+
   }, [dataPeople]);
+
+  
+
   return (
     <div>
       <h1>LOS PERSONAJES</h1>
@@ -43,7 +57,7 @@ export const Characters = () => {
           <li className="page-item">
               <p className="page-link">{Contador}</p>
           </li>
-          <li className={disabledRight ? "page-item" :"page-item disabled"}>
+          <li className={disabledRight ? "page-item disabled" : "page-item"}>
             <button className="page-link" onClick={aumentar}>
               <span className="sr-only">Next</span>
               <span aria-hidden="true">&raquo;</span>

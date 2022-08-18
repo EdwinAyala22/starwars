@@ -9,7 +9,6 @@ export const usePerson = () => {
   
   const [disabled, setDisabled] = useState(false);
 
-  const [disabledRight, setDisabledRight] = useState(true);
 
   const disminuir = () => {
     if (Contador <= 1) {
@@ -23,9 +22,7 @@ export const usePerson = () => {
   const aumentar = () => {
 
     if(Contador >=9){
-      
-    }else if(Contador===9){
-      setDisabledRight(false)
+
     }
     else{
       setContador(Contador + 1);
@@ -59,6 +56,6 @@ export const usePerson = () => {
     Contador,
     aumentar,
     disminuir,
-    disabled, disabledRight
+    disabled, 
   };
 };
