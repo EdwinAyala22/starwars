@@ -9,6 +9,7 @@ export const usePerson = () => {
   
   const [disabled, setDisabled] = useState(false);
 
+  // const [url, setUrl] = useState('');
 
   const disminuir = () => {
     if (Contador <= 1) {
@@ -30,6 +31,32 @@ export const usePerson = () => {
     }
 
   };
+
+  const getPerson = async (urlPerson)=>{
+    try {
+      var requestOptions = {
+        method: "GET",
+        redirect: "follow",
+      };
+
+      await fetch(
+        urlPerson,
+        requestOptions
+      )
+        .then((response) => response.json())
+        .then((result) => setDataPeople(result))
+        .catch((error) => console.log("error", error));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const back = ()=>{
+    window.history.go(-1);
+  }
+  // const cambiarUrl = (link) =>{
+  //     setUrl(link);
+  // }
 
   const getAllPerson = async (numberPage) => {
     try {
@@ -56,6 +83,8 @@ export const usePerson = () => {
     Contador,
     aumentar,
     disminuir,
-    disabled, 
+    disabled,
+    getPerson,
+    back
   };
 };

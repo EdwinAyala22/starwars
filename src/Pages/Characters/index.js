@@ -43,6 +43,8 @@ export const Characters = () => {
             birthYear={people.birth_year}
             styleButtonCharacter={people.eye_color}
             imgPerson={imgPerson}
+            keyName={people.name}
+            linkName={people.name}
           />
         ))}
       </div>
