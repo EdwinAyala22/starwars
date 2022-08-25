@@ -13,6 +13,8 @@ export const usePerson = () => {
 
   // const [url, setUrl] = useState('');
 
+  
+
   const disminuir = () => {
     if (Contador <= 1) {
       setContador(1);
@@ -42,7 +44,7 @@ export const usePerson = () => {
       };
 
       await fetch(
-      `${urlData}`,
+        urlData,
         requestOptions
       )
         .then((response) => response.json())

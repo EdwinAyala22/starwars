@@ -2,14 +2,16 @@ import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { usePerson } from "../../../Hooks/usePerson";
 import { useParams } from "react-router-dom";
+import { usePlanets } from "../../../Hooks/usePlanets";
 
 import imgGenerica from "../../../Assets/img/imgPerson.jpg";
 
 export const DetailCharacter = () => {
-  const { getDataApi, back, getAllPerson, dataPeople, dataApi } = usePerson();
+  const { back, getAllPerson, dataPeople } = usePerson();
+  const { getPlanetPerson, dataPlanetPerson } = usePlanets();
 
   const params = useParams();
-  console.log(params);
+  // console.log(params);
   const listParams = [params];
 
   const mapeo = listParams.map((list) => list.linkname);
@@ -19,14 +21,16 @@ export const DetailCharacter = () => {
   var numero = mapeo2[0];
 
   useEffect(() => {
+
     getAllPerson(numero);
+
   }, []);
 
-  console.log(numero);
+  // console.log(numero);
 
   const filtro = dataPeople.filter((nashe) => nashe.name === nombre);
 
-  console.log(filtro);
+  // console.log(filtro);
 
   const mapeo3 = filtro.map((per) => per.homeworld);
   var homeWorld = mapeo3[0];
@@ -34,11 +38,11 @@ export const DetailCharacter = () => {
 
   useEffect(() => {
 
-    getDataApi(homeWorld);
+    getPlanetPerson(homeWorld);
 
-  }, []);
+  }, [dataPlanetPerson]);
 
-  console.log(dataApi)
+  // console.log(dataApi)
 
   return (
     <div>
@@ -68,8 +72,8 @@ export const DetailCharacter = () => {
                     <div className="col-md-6">
                       <p><b>Hair color:</b> {persona.hair_color}</p>
                       <p><b>Height:</b> {persona.height} cm</p>
-                      <p><b>Mass:</b> {persona.height} kg</p>
-                      <p><b>Skin color:</b> {persona.height} kg</p>
+                      <p><b>Mass:</b> {persona.mass} kg</p>
+                      <p><b>Skin color:</b> {persona.skin_color}</p>
                     </div>
                   </div>
                 ))}
@@ -81,7 +85,7 @@ export const DetailCharacter = () => {
         <div className="container">
           <div className="row">
             <div className="col">
-              {dataApi.map((world) => (
+              {dataPlanetPerson.map((world) => (
                 <div key={world.name} className="card text-white bg-dark mb-3" style="max-width: 18rem;">
                   <div className="card-header">Homeworld</div>
                   <div className="card-body">
