@@ -45,6 +45,7 @@ export const Characters = () => {
             imgPerson={imgPerson}
             keyName={people.name}
             linkName={people.name}
+            num={Contador}
           />
         ))}
       </div>

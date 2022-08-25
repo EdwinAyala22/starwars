@@ -5,6 +5,8 @@ import { useState } from "react";
 export const usePerson = () => {
   const [dataPeople, setDataPeople] = useState([]);
 
+  const [dataApi, setDataApi] = useState([]);
+
   const [Contador, setContador] = useState(1);
   
   const [disabled, setDisabled] = useState(false);
@@ -32,7 +34,7 @@ export const usePerson = () => {
 
   };
 
-  const getPerson = async (urlPerson)=>{
+  const getDataApi = async (urlData)=>{
     try {
       var requestOptions = {
         method: "GET",
@@ -40,11 +42,11 @@ export const usePerson = () => {
       };
 
       await fetch(
-        urlPerson,
+      `${urlData}`,
         requestOptions
       )
         .then((response) => response.json())
-        .then((result) => setDataPeople(result))
+        .then((result) => setDataApi(result))
         .catch((error) => console.log("error", error));
     } catch (error) {
       console.log(error);
@@ -84,7 +86,8 @@ export const usePerson = () => {
     aumentar,
     disminuir,
     disabled,
-    getPerson,
-    back
+    getDataApi,
+    back, 
+    dataApi
   };
 };

@@ -7,7 +7,7 @@ import CardHeader from "react-bootstrap/esm/CardHeader";
 import {Link} from 'react-router-dom';
 // import {imgPerson} from "../../Assets/img/imgPerson.jpg";
 
-export const CardCharacter = ({name, hairColor, eyeColor, skinColor, gender, height, mass, birthYear, imgPerson, linkName, keyName}) => {
+export const CardCharacter = ({name, hairColor, eyeColor, skinColor, gender, height, mass, birthYear, imgPerson, linkName, keyName, num}) => {
   return (
     <Card style={{ width: "19rem" }} className="m-5 text-center cardCharacter" >
       <CardHeader className="bg-dark text-white fw-bold">
@@ -24,7 +24,7 @@ export const CardCharacter = ({name, hairColor, eyeColor, skinColor, gender, hei
         <ListGroup.Item><b>Birth year:</b> {birthYear}</ListGroup.Item>
       </ListGroup>
       <Card.Body>
-        <Link to={`/details/${linkName}`} key={keyName}>
+        <Link to={`/details/${linkName}/${num}`} key={keyName}>
           <Button className="buttonCardCharacter" >Details</Button>
         </Link>
       </Card.Body>
