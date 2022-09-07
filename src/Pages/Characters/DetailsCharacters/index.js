@@ -5,11 +5,12 @@ import { useParams } from "react-router-dom";
 import { usePlanets } from "../../../Hooks/usePlanets";
 
 import imgGenerica from "../../../Assets/img/imgPerson.jpg";
+import { useFilms } from "../../../Hooks/useFilms";
 
 export const DetailCharacter = () => {
   const { back, getAllPerson, dataPeople } = usePerson();
-  const { getPlanetPerson, dataPlanetPerson } = usePlanets();
-
+  const { dataPlanetPerson, getDetailPlanet } = usePlanets();
+  const {dataFilms, pintarPeliculas} = useFilms();
   const params = useParams();
   // console.log(params);
   const listParams = [params];
@@ -21,28 +22,19 @@ export const DetailCharacter = () => {
   var numero = mapeo2[0];
 
   useEffect(() => {
-
     getAllPerson(numero);
+  }, [numero]);
 
-  }, []);
-
-  // console.log(numero);
 
   const filtro = dataPeople.filter((nashe) => nashe.name === nombre);
 
-  // console.log(filtro);
-
   const mapeo3 = filtro.map((per) => per.homeworld);
+  const mapeo4 = filtro.map((pers) => pers.films);
   var homeWorld = mapeo3[0];
-  console.log(homeWorld);
-
-  useEffect(() => {
-
-    getPlanetPerson(homeWorld);
-
-  }, [dataPlanetPerson]);
-
-  // console.log(dataApi)
+  var peliculas = mapeo4;
+  pintarPeliculas(peliculas);
+  console.log(dataFilms);
+  getDetailPlanet(homeWorld);
 
   return (
     <div>
@@ -63,40 +55,54 @@ export const DetailCharacter = () => {
                 {filtro.map((persona) => (
                   <div key={persona.name} className="row mt-5">
                     <div className="col-md-6">
-                      <p><b>Birth year:</b> {persona.birth_year}</p>
-                      <p><b>Created:</b> {persona.created}</p>
-                      <p><b>Edited:</b> {persona.edited}</p>
-                      <p><b>Eye color:</b> {persona.eye_color}</p>
-                      <p><b>Gender:</b> {persona.gender}</p>
+                      <p>
+                        <b>Birth year:</b> {persona.birth_year}
+                      </p>
+                      <p>
+                        <b>Created:</b> {persona.created}
+                      </p>
+                      <p>
+                        <b>Edited:</b> {persona.edited}
+                      </p>
+                      <p>
+                        <b>Eye color:</b> {persona.eye_color}
+                      </p>
+                      <p>
+                        <b>Gender:</b> {persona.gender}
+                      </p>
                     </div>
                     <div className="col-md-6">
-                      <p><b>Hair color:</b> {persona.hair_color}</p>
-                      <p><b>Height:</b> {persona.height} cm</p>
-                      <p><b>Mass:</b> {persona.mass} kg</p>
-                      <p><b>Skin color:</b> {persona.skin_color}</p>
+                      <p>
+                        <b>Hair color:</b> {persona.hair_color}
+                      </p>
+                      <p>
+                        <b>Height:</b> {persona.height} cm
+                      </p>
+                      <p>
+                        <b>Mass:</b> {persona.mass} kg
+                      </p>
+                      <p>
+                        <b>Skin color:</b> {persona.skin_color}
+                      </p>
                     </div>
                   </div>
                 ))}
-
               </div>
             </div>
           </div>
         </div>
-        <div className="container">
-          <div className="row">
-            <div className="col">
-              {dataPlanetPerson.map((world) => (
-                <div key={world.name} className="card text-white bg-dark mb-3" style="max-width: 18rem;">
-                  <div className="card-header">Homeworld</div>
-                  <div className="card-body">
-                    <h5 className="card-title">{world.name}</h5>
-                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  </div>
-                </div>
-              ))}
+      </div>
+      <div className="container p-4">
+        {dataPlanetPerson?.length > 0 && (
+          <div className="card text-bg-warning mb-3" style={{maxWidth: "18rem"}}>
+            <div className="card-header fw-bold">Home World</div>
+            <div className="card-body">
+              <h5 className="card-title text-center">{dataPlanetPerson[0].name}</h5>
+              <p><b>Terrain:</b> {dataPlanetPerson[0].terrain}</p>
+              <p><b>Population:</b> {dataPlanetPerson[0].population}</p>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
