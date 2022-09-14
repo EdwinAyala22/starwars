@@ -1,38 +1,57 @@
-import { useState } from "react";
+import React, {useState} from 'react'
 
 export const useFilms = () => {
-
-    const [dataFilms, setDataFilms] = useState([]);
-
-    const getFilmPerson = async (laUrl) => {
-        try {
-          var requestOptions = {
-            method: "GET",
-            redirect: "follow",
-          };
     
-          await fetch(
-            laUrl,
-            requestOptions
-          )
-            .then((response) => response.json())
-            .then((result) => setDataFilms(...dataFilms,result))
-            .catch((error) => console.log("error", error));
-        } catch (error) {
-          console.log(error);
-        }
+    const [films, setFilms] = useState([]);
+
+    // const getFilms = async (url) => {
+    //     // console.log(url);
+    //     try {
+    //       var requestOptions = {
+    //         method: "GET",
+    //         redirect: "follow",
+    //       };
+    
+    //       await fetch(
+    //         `${url}`,
+    //         requestOptions
+    //       )
+    //         .then((response) => response.json())
+    //         .then((result) => setFilms([...films, result]))
+    //         .catch((error) => console.log("error", error));
+    //     } catch (error) {
+    //       console.log(error);
+    //     }
+    //   }
+
+    let x =0;
+
+      const getFilms = (url) => {
+        // console.log(url);
+        url.map((peli) =>{
+          try {
+            var requestOptions = {
+              method: "GET",
+              redirect: "follow",
+            };
+      
+             fetch(
+              `${peli}`,
+              requestOptions
+            )
+              .then((response) => response.json())
+              .then((result) => setFilms([...films, result?.title]))
+              // .then((result) => console.log(result, x++))
+              .catch((error) => console.log("error", error));
+          } catch (error) {
+            console.log(error);
+          }
+        })
       }
 
-    const pintarPeliculas = (lista) =>{
-        // var peliculas = []
-        for (var i = 0; i > lista.length; i++ ){
-            getFilmPerson(lista[i]);
-        }
-
-    }
-
-  return {
-    pintarPeliculas,
-    dataFilms
-  };    
+    return {
+        getFilms,
+        films
+  };
+    
 }

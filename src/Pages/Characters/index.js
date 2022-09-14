@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import { usePerson } from "../../Hooks/usePerson";
 import { CardCharacter } from "./Card";
 import imgPerson from "../../Assets/img/imgPerson.jpg";
+import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+
 // import { BsArrowRightSquareFill } from "react-icons/bs";
 
 export const Characters = () => {
-  const { getAllPerson, dataPeople, Contador, disminuir, aumentar, disabled } = usePerson();
+  const { getAllPerson, dataPeople, Contador, disminuir, aumentar, disabled, detailPeople, setDetailPeople, pasarUrl } = usePerson();
 
 
   const [disabledRight, setDisabledRight] = useState(false);
@@ -15,16 +18,19 @@ export const Characters = () => {
 
     getAllPerson(Contador);
 
-    if(Contador ===9){
-        setDisabledRight(true);
-      }
-    if(Contador < 9){
+    if (Contador === 9) {
+      setDisabledRight(true);
+    }
+    if (Contador < 9) {
       setDisabledRight(false);
     }
+
 
   }, [dataPeople]);
 
   
+
+
 
   return (
     <div>
@@ -43,22 +49,23 @@ export const Characters = () => {
             birthYear={people.birth_year}
             styleButtonCharacter={people.eye_color}
             imgPerson={imgPerson}
-            keyName={people.name}
-            linkName={people.name}
-            num={Contador}
-          />
+            Componente={<Link to={`/details/${btoa(people.url)}`} key={people.name} className="btn buttonCardCharacter">
+              Details
+            </Link>}
+          >
+          </CardCharacter>
         ))}
       </div>
       <nav aria-label="Page navigation example" className="d-flex justify-content-center align-items-center">
         <ul className="pagination">
-          <li className={disabled ? "page-item" :"page-item disabled"}>
+          <li className={disabled ? "page-item" : "page-item disabled"}>
             <button className="page-link" onClick={disminuir}>
               <span aria-hidden="true">&laquo;</span>
               <span className="sr-only">Previous</span>
             </button>
           </li>
           <li className="page-item">
-              <p className="page-link">{Contador}</p>
+            <p className="page-link">{Contador}</p>
           </li>
           <li className={disabledRight ? "page-item disabled" : "page-item"}>
             <button className="page-link" onClick={aumentar}>
@@ -68,7 +75,6 @@ export const Characters = () => {
           </li>
         </ul>
       </nav>
-
     </div>
   );
 };

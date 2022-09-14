@@ -32,8 +32,6 @@ export const Planets = () => {
             rotation={planets.rotation_period}
             surfaceWater={planets.surface_water}
             imgPlanet={imgPlanet}
-            keyName={planets.name}
-            linkName={planets.name}
           />
         ))}
       </div>

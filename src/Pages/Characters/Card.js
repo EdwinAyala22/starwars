@@ -1,13 +1,22 @@
-import React from "react";
+import React, {useEffect} from "react";
 import ListGroup from 'react-bootstrap/ListGroup';
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import './card.css';
 import CardHeader from "react-bootstrap/esm/CardHeader";
-import {Link} from 'react-router-dom';
+// import { Link } from "react-router-dom";
+import { usePerson } from "../../Hooks/usePerson";
 // import {imgPerson} from "../../Assets/img/imgPerson.jpg";
 
-export const CardCharacter = ({name, hairColor, eyeColor, skinColor, gender, height, mass, birthYear, imgPerson, linkName, keyName, num, numPersonaje}) => {
+export const CardCharacter = ({name, hairColor, eyeColor, skinColor, gender, height, mass, birthYear, imgPerson, url, Componente}) => {
+  // const {setDetailPeople, pasarUrl} = usePerson();
+
+  // useEffect(() => {
+
+  //   pasarUrl(url);
+
+  // }, []);
+
   return (
     <Card style={{ width: "19rem" }} className="m-5 text-center cardCharacter" >
       <CardHeader className="bg-dark text-white fw-bold">
@@ -22,13 +31,13 @@ export const CardCharacter = ({name, hairColor, eyeColor, skinColor, gender, hei
         <ListGroup.Item><b>Height:</b> {height}</ListGroup.Item>
         <ListGroup.Item><b>Mass:</b> {mass}</ListGroup.Item>
         <ListGroup.Item><b>Birth year:</b> {birthYear}</ListGroup.Item>
-        <ListGroup.Item className="visually-hidden"><b>Num personaje:</b> {numPersonaje}</ListGroup.Item>
       </ListGroup>
       <Card.Body>
-        <Link to={`/details/${linkName}/${num}`} key={keyName}>
-          <Button className="buttonCardCharacter" >Details</Button>
-        </Link>
-        {/*    */}
+        {Componente}
+        {/* <Link to={`/details/${linkName}/${num}`} key={keyName}>
+            <Button className="buttonCardCharacter" onClick={url} >Details</Button>
+          </Link> */}
+          
       </Card.Body>
     </Card>
   );

@@ -6,18 +6,16 @@ import { Characters } from './Pages/Characters';
 import { Planets } from './Pages/Planets';
 import { NavbarApp } from './Components/Navbar';
 import { FooterApp } from './Components/Footer';
-import { DetailCharacter } from './Pages/Characters/DetailsCharacters';
-
+import { DetailsCharacters } from './Pages/DetailsCharacters';
 function App() {
-
   return (
     <div>
       <NavbarApp/>
       <Routes>
         <Route path='/' element={<HomeApp/>} />
-        <Route path='/characters/' element={<Characters/>} />
+        <Route path='/characters' element={<Characters/>} />
         <Route path='/planets' element={<Planets/>} />
-        <Route path='/details/:linkname/:num' element={<DetailCharacter/>} />
+        <Route path='/details/:linkname' element={<DetailsCharacters/>} />
       </Routes>
       <FooterApp/>
     </div>

@@ -22,7 +22,7 @@ export const CardPlanets = ({name, terrain, population, gravity, climate, diamet
         <ListGroup.Item><b>Surface water:</b> {surfaceWater}</ListGroup.Item>
       </ListGroup>
       <Card.Body>
-          <Button className="buttonCardPlanets" >Details</Button>
+        <Button className="buttonCardPlanets" >Details</Button>
       </Card.Body>
     </Card>
   );

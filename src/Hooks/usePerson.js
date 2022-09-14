@@ -5,15 +5,11 @@ import { useState } from "react";
 export const usePerson = () => {
   const [dataPeople, setDataPeople] = useState([]);
 
-  const [dataApi, setDataApi] = useState([]);
-
   const [Contador, setContador] = useState(1);
-  
+
   const [disabled, setDisabled] = useState(false);
 
-  // const [url, setUrl] = useState('');
-
-  
+  const [detail, setDetail] = useState([]);
 
   const disminuir = () => {
     if (Contador <= 1) {
@@ -26,17 +22,17 @@ export const usePerson = () => {
   };
   const aumentar = () => {
 
-    if(Contador >=9){
+    if (Contador >= 9) {
 
     }
-    else{
+    else {
       setContador(Contador + 1);
       setDisabled(true)
     }
 
   };
 
-  const getDataApi = async (urlData)=>{
+  const getDetailPerson = async (url) => {
     try {
       var requestOptions = {
         method: "GET",
@@ -44,23 +40,16 @@ export const usePerson = () => {
       };
 
       await fetch(
-        urlData,
+        `${url}`,
         requestOptions
       )
         .then((response) => response.json())
-        .then((result) => setDataApi(result))
+        .then((result) => setDetail(result))
         .catch((error) => console.log("error", error));
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const back = ()=>{
-    window.history.go(-1);
   }
-  // const cambiarUrl = (link) =>{
-  //     setUrl(link);
-  // }
 
   const getAllPerson = async (numberPage) => {
     try {
@@ -88,8 +77,7 @@ export const usePerson = () => {
     aumentar,
     disminuir,
     disabled,
-    getDataApi,
-    back, 
-    dataApi
+    getDetailPerson,
+    detail
   };
 };
