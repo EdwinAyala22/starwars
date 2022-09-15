@@ -3,7 +3,8 @@ import React, {useState} from 'react'
 export const useFilms = () => {
     
     const [films, setFilms] = useState([]);
-
+    // const [prueba, setPrueba] =useState([]);
+    // var laLista = [];
     // const getFilms = async (url) => {
     //     // console.log(url);
     //     try {
@@ -24,10 +25,32 @@ export const useFilms = () => {
     //     }
     //   }
 
+    // const getFilms = async (url) => {
+    //   for (let i = 0; i < url.length; i++) {
+    //     try {
+    //       var requestOptions = {
+    //         method: "GET",
+    //         redirect: "follow",
+    //       };
+    
+    //       await fetch(
+    //         `${url[i]}`,
+    //         requestOptions
+    //       )
+    //         .then((response) => response.json())
+    //         .then((result) => setFilms( result?.title))
+    //         .catch((error) => console.log("error", error));
+    //     } catch (error) {
+    //       console.log(error);
+    //     }
+    //     laLista.push(films);
+    //   }
+    //   setPrueba(laLista)
+    // }
+
     let x =0;
 
       const getFilms = (url) => {
-        // console.log(url);
         url.map((peli) =>{
           try {
             var requestOptions = {

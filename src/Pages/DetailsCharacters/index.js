@@ -6,9 +6,11 @@ import { usePlanets } from '../../Hooks/usePlanets';
 import { useFilms } from '../../Hooks/useFilms';
 import { Detalles } from './detalles';
 import imagen from '../../Assets/img/detailsPeople.jpg';
+import { Button } from "react-bootstrap";
+import { Cards } from './cards';
 
 export const DetailsCharacters = () => {
-  const { getDetailPerson, detail } = usePerson();
+  const { getDetailPerson, detail, back } = usePerson();
   const { getHomeworld, homeworld } = usePlanets();
   const { getFilms, films } = useFilms();
   const params = useParams();
@@ -41,14 +43,10 @@ export const DetailsCharacters = () => {
     ready();
   }, [detail?.homeworld]);
 
-    const pelis = detail.films;
       // for (let i = 0; i < pelis.length; i++) {
       // getFilms(pelis[i]);
-      // const lasPelis = [...films, pelis[i]];
-      // console.log(lasPelis);
-    // }
-  console.table(films);
-  // console.log(detail.films)
+     // }
+  // console.log(films);
   // const elPlaneta = detail.homeworld;
   // const peliculas = detail.films;
   // const species = detail.species;
@@ -60,8 +58,11 @@ export const DetailsCharacters = () => {
   
   return (
     <>
+      <Button className="buttonCardCharacter m-2" onClick={back}>
+        Volver
+      </Button>
       <div className='container mb-4'>
-        <h1 className='text-center m-4 fw-bold'>DETALLES DEL PERSONAJE</h1>
+        <h1 className='text-center m-4 fw-bold'>DETAILS CHARACTER</h1>
         <div className='row'>
           <div className='col-md-3 d-flex justify-content-center align-items-center'>
             <img
@@ -87,9 +88,19 @@ export const DetailsCharacters = () => {
             />
           </div>
         </div>
+        <div className='row'>
+            <div className='col-md-3'>
+
+            </div>
+            <div className='col-md-9'>
+                <Cards
+                  title={films}
+                />
+            </div>
+        </div>
         {/* <p>Name: </p>
         <p>Homeworld: {homeworld.name}</p> */}
-        <p>{films}</p>
+        {/* <p>{films}</p> */}
       </div>
     </>
   )

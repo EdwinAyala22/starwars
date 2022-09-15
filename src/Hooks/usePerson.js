@@ -51,6 +51,10 @@ export const usePerson = () => {
     }
   }
 
+  const back = ()=>{
+    window.history.go(-1);
+  }
+
   const getAllPerson = async (numberPage) => {
     try {
       var requestOptions = {
@@ -78,6 +82,7 @@ export const usePerson = () => {
     disminuir,
     disabled,
     getDetailPerson,
-    detail
+    detail,
+    back
   };
 };
