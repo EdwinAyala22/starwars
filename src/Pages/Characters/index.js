@@ -49,7 +49,7 @@ export const Characters = () => {
             birthYear={people.birth_year}
             styleButtonCharacter={people.eye_color}
             imgPerson={imgPerson}
-            Componente={<Link to={`/details/${btoa(people.url)}`} key={people.name} className="btn buttonCardCharacter">
+            Componente={<Link to={`/details/${window.btoa(people.url)}`} key={people.name} className="btn buttonCardCharacter">
               Details
             </Link>}
           >
